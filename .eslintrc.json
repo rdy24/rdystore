@@ -1,0 +1,43 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "react/no-unknown-property": "off",
+    "linebreak-style": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/alt-text": "off",
+    "jsx-a11y/no-redundant-roles": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/self-closing-comp": "off",
+    "object-curly-newline": "off",
+    "no-underscore-dangle": "off",
+    "indent": 0,
+    "quotes": "off",
+    "no-tabs": 0
+  }
+}

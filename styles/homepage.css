@@ -1,0 +1,220 @@
+/* Navbar */
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+  font-weight: 500;
+  color: #0c145a;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #0c145a;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #7e8cac;
+}
+
+.navbar-light .logo-brand {
+  font-size: 30px;
+  font-weight: bold;
+  color: #f60165;
+}
+
+.navbar-light .btn-sign-in {
+  color: #0c145a;
+  background-color: transparent;
+  padding: 0.75rem 1.875rem;
+}
+
+.navbar-light .btn-sign-in:hover {
+  color: #0c145a;
+  background-color: #e7eaf5;
+  padding: 0.75rem 1.875rem;
+}
+
+/*  */
+
+/* Header */
+.header .header-title {
+  font-size: 2.625rem;
+  line-height: 1.5;
+}
+
+.header .btn-get {
+  background-color: #f60165;
+  transition: all 0.5s ease;
+  line-height: 1;
+  border: 3px solid #f60165;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.75rem 3rem;
+}
+
+.header .btn-get:hover {
+  background-color: transparent;
+  color: #f60165;
+  padding: 0.75rem 3rem;
+}
+
+.header .btn-learn:hover {
+  color: #0c145a;
+}
+
+.header .card {
+  border-radius: 1rem;
+  box-shadow: -8px 8px 58px 0px rgba(0, 0, 0, 0.1);
+}
+
+/*  */
+
+/* Feature */
+.feature .feature-card {
+  background-color: #ecf0ff;
+  padding: 1.875rem;
+  border-radius: 1.625rem;
+  margin-right: 10px;
+}
+/*  */
+
+/* Featured Game */
+.featured-game .overflow-setting {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.featured-game .featured-game-card {
+  border-radius: 2rem;
+}
+
+.img-game {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20%;
+  padding: 20px 20px 0 20px;
+}
+
+.featured-game .featured-game-card .card-body .btn-top-up {
+  background-color: transparent;
+  transition: all 0.5s ease;
+  line-height: 1;
+  border: 3px solid #f60165;
+  color: #f60165;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.featured-game .featured-game-card .card-body .btn-top-up:hover {
+  color: #fff;
+  background-color: #f60165;
+}
+
+@media (min-width: 768px) {
+  .featured-game .overflow-setting {
+    overflow: hidden;
+  }
+}
+
+/*  */
+
+/* Reached */
+.reached .vertical-line {
+  width: 1px;
+  background-color: #e7eaf5;
+  height: 94px;
+}
+
+.reached .horizontal-line {
+  width: 240px;
+  background-color: #e7eaf5;
+  height: 1px;
+}
+/*  */
+
+/* Story */
+.story .btn-read {
+  padding: 0.75rem 3rem;
+  background-color: #e7eaf5;
+}
+
+.story .img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+/*  */
+
+/* Footer */
+footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #f9faff;
+}
+
+footer ul {
+  margin-bottom: 0;
+}
+
+footer ul li a {
+  transition: 0.2s;
+}
+
+footer ul li a:hover {
+  color: #4d17e2;
+  text-decoration: underline !important;
+  background-color: transparent;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+@media (max-width: 768px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  /* Header */
+
+  /*  */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* Navbar */
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+  /*  */
+
+  /* Header */
+  .header .underline-blue {
+    text-decoration: none;
+    position: relative;
+  }
+
+  .header .underline-blue:after {
+    position: absolute;
+    content: "";
+    height: 8px;
+    bottom: 11px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #00baff;
+    z-index: -10;
+  }
+  /*  */
+
+  /* Featured Game */
+  .featured-game .featured-game-card:hover .blur-sharp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
