@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Auth from "./Auth";
 import Menu from "./Menu";
 import ToogleButton from "./ToogleButton";
 
@@ -32,6 +33,7 @@ export default function Navbar(props: Partial<TitleProps>) {
               <Menu title="Games" active={games} href="/" />
               <Menu title="Articles" active={article} href="/articles" />
               <Menu title="About Us" active={about} href="/about" />
+              <Auth isLogin />
             </ul>
           </div>
         </div>
