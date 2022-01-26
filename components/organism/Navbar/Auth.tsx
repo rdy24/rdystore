@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Link from "next/Link";
+import Link from "next/link";
 
 interface AuthProps {
   // eslint-disable-next-line react/require-default-props

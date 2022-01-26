@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/Link";
+import Link from "next/link";
 import CheckoutConfirmation from "../components/organism/CheckoutConfirmation";
 import CheckoutDetail from "../components/organism/CheckoutDetail";
 import CheckoutItem from "../components/organism/CheckoutItem";
