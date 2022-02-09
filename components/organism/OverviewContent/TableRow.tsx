@@ -22,7 +22,7 @@ export default function TableRow(props: TableRowProps) {
       <th scope="row">
         <img
           className="float-start me-3 mb-lg-0 mb-3"
-          src={`/img/${image}.png`}
+          src={`${image}`}
           width={80}
           height={60}
           alt="game thumb"

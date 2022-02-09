@@ -43,6 +43,8 @@
     "function-paren-newline": "off",
     "import/no-extraneous-dependencies": "off",
     "operator-linebreak": "off",
+    "react/jsx-curly-newline": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
     "indent": 0,
     "quotes": "off",
     "no-tabs": 0

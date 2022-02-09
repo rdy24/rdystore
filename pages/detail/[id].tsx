@@ -1,35 +1,26 @@
-import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import Navbar from "../../components/organism/Navbar";
 import Footer from "../../components/organism/Footer";
-import { getDetailGame } from "../../services/player";
+import { getDetailGame, getFeaturedGame } from "../../services/player";
 import TopUpItem from "../../components/organism/TopUpItem";
 import TopUpForm from "../../components/organism/TopUpForm";
+import {
+  NominalItemTypes,
+  GameItemTypes,
+  PaymentItemTypes,
+} from "../../services/data-type/index";
 
-export default function Detail() {
-  const { query, isReady } = useRouter();
-  const [dataItem, setDataItem] = useState({
-    name: "",
-    thumbnail: "",
-    category: {
-      name: "",
-    },
-  });
-  const [nominals, setNominals] = useState([]);
-  const [payments, setPayments] = useState([]);
-  const getDetailGameAPI = useCallback(async (id) => {
-    const response = await getDetailGame(id);
-    setDataItem(response.detail);
-    localStorage.setItem("data-item", JSON.stringify(response.detail));
-    setNominals(response.detail.nominals);
-    setPayments(response.payment);
-  }, []);
+interface DetailProps {
+  dataItem: GameItemTypes;
+  nominals: NominalItemTypes[];
+  payments: PaymentItemTypes[];
+}
+
+export default function Detail({ dataItem, nominals, payments }: DetailProps) {
   useEffect(() => {
-    if (isReady) {
-      getDetailGameAPI(query.id);
-    }
-  });
+    localStorage.setItem("data-item", JSON.stringify(dataItem));
+  }, []);
   return (
     <>
       <Head>
@@ -63,4 +54,34 @@ export default function Detail() {
       <Footer />
     </>
   );
+}
+export async function getStaticPaths() {
+  const data = await getFeaturedGame();
+  const paths = data.map((item: GameItemTypes) => ({
+    params: {
+      id: item._id,
+    },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+interface GetStaticProps {
+  params: {
+    id: string;
+  };
+}
+
+export async function getStaticProps({ params }: GetStaticProps) {
+  const { id } = params;
+  const data = await getDetailGame(id);
+  return {
+    props: {
+      dataItem: data.detail,
+      nominals: data.detail.nominals,
+      payments: data.payment,
+    },
+  };
 }

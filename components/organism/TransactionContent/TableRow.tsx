@@ -9,9 +9,10 @@ interface TableRowProps {
   item: string;
   price: number;
   status: string;
+  id: string;
 }
 export default function TableRow(props: TableRowProps) {
-  const { image, title, category, item, price, status } = props;
+  const { image, title, category, item, price, status, id } = props;
   const statusClass = cx({
     "float-start icon-status": true,
     pending: status === "pending",
@@ -23,7 +24,7 @@ export default function TableRow(props: TableRowProps) {
       <th scope="row">
         <img
           className="float-start me-3 mb-lg-0 mb-3"
-          src={`/img/${image}.png`}
+          src={image}
           width="80"
           height="60"
           alt=""
@@ -60,7 +61,7 @@ export default function TableRow(props: TableRowProps) {
         </div>
       </td>
       <td>
-        <Link href="/member/transactions/transactions-detail">
+        <Link href={`/member/transactions/${id}`}>
           <a className="btn btn-status rounded-pill text-sm">Details</a>
         </Link>
       </td>
