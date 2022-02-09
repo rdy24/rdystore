@@ -1,6 +1,60 @@
-import Link from "next/link";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/router";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  BanksTypes,
+  NominalItemTypes,
+  PaymentItemTypes,
+} from "../../../services/data-type";
+import NominalItem from "./NominalItem";
+import PaymentItem from "./PaymentItem";
 
-export default function TopUpForm() {
+interface TopUpItemProps {
+  nominals: NominalItemTypes[];
+  payments: PaymentItemTypes[];
+}
+
+export default function TopUpForm(props: TopUpItemProps) {
+  const { nominals, payments } = props;
+  const [verifyID, setVerifyID] = useState("");
+  const [bankAccountName, setBankAccountName] = useState("");
+  const [nominalItem, setNominalItem] = useState({});
+  const [paymentItem, setPaymentItem] = useState({});
+
+  const onNominalItemChange = (data: NominalItemTypes) => {
+    setNominalItem(data);
+  };
+
+  const onPaymentItemChange = (payment: PaymentItemTypes, bank: BanksTypes) => {
+    const data = {
+      payment,
+      bank,
+    };
+    setPaymentItem(data);
+  };
+
+  const router = useRouter();
+
+  const onSubmit = () => {
+    if (
+      verifyID === "" ||
+      bankAccountName === "" ||
+      nominalItem === {} ||
+      paymentItem === {}
+    ) {
+      toast.error("Silahkan isi semua data!!!");
+    } else {
+      const data = {
+        verifyID,
+        bankAccountName,
+        nominalItem,
+        paymentItem,
+      };
+      localStorage.setItem("data-topup", JSON.stringify(data));
+      router.push("/checkout");
+    }
+  };
   return (
     <>
       <form action="./checkout.html" method="POST">
@@ -19,6 +73,8 @@ export default function TopUpForm() {
               name="ID"
               aria-describedby="verifyID"
               placeholder="Enter your ID"
+              value={verifyID}
+              onChange={(event) => setVerifyID(event.target.value)}
             />
           </div>
         </div>
@@ -27,116 +83,17 @@ export default function TopUpForm() {
             Nominal Top Up
           </p>
           <div className="row justify-content-between">
-            <label
-              className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-              htmlFor="topup1"
-            >
-              <input
-                className="d-none"
-                type="radio"
-                id="topup1"
-                name="topup"
-                value="topup1"
+            {nominals.map((nominal) => (
+              <NominalItem
+                key={nominal._id}
+                _id={nominal._id}
+                coinQuantity={nominal.coinQuantity}
+                coinName={nominal.coinName}
+                price={nominal.price}
+                onChange={() => onNominalItemChange(nominal)}
               />
-              <div className="detail-card">
-                <div className="d-flex justify-content-between">
-                  <p className="text-3xl color-palette-1 m-0">
-                    <span className="fw-medium">125</span>
-                    Gold
-                  </p>
-                  <img src="/icon/check.svg" alt="" id="icon-check" />
-                </div>
-                <p className="text-lg color-palette-1 m-0">Rp 3.250.000</p>
-              </div>
-            </label>
-            <label
-              className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-              htmlFor="topup2"
-            >
-              <input
-                className="d-none"
-                type="radio"
-                id="topup2"
-                name="topup"
-                value="topup2"
-              />
-              <div className="detail-card">
-                <div className="d-flex justify-content-between">
-                  <p className="text-3xl color-palette-1 m-0">
-                    <span className="fw-medium">225</span>
-                    Gold
-                  </p>
-                  <img src="/icon/check.svg" alt="" id="icon-check" />
-                </div>
-                <p className="text-lg color-palette-1 m-0">Rp 3.250.000</p>
-              </div>
-            </label>
-            <label
-              className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-              htmlFor="topup3"
-            >
-              <input
-                className="d-none"
-                type="radio"
-                id="topup3"
-                name="topup"
-                value="topup3"
-              />
-              <div className="detail-card">
-                <div className="d-flex justify-content-between">
-                  <p className="text-3xl color-palette-1 m-0">
-                    <span className="fw-medium">350</span>
-                    Gold
-                  </p>
-                  <img src="/icon/check.svg" alt="" id="icon-check" />
-                </div>
-                <p className="text-lg color-palette-1 m-0">Rp 3.250.000</p>
-              </div>
-            </label>
-            <label
-              className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-              htmlFor="topup4"
-            >
-              <input
-                className="d-none"
-                type="radio"
-                id="topup4"
-                name="topup"
-                value="topup4"
-              />
-              <div className="detail-card">
-                <div className="d-flex justify-content-between">
-                  <p className="text-3xl color-palette-1 m-0">
-                    <span className="fw-medium">550</span>
-                    Gold
-                  </p>
-                  <img src="/icon/check.svg" alt="" id="icon-check" />
-                </div>
-                <p className="text-lg color-palette-1 m-0">Rp 3.250.000</p>
-              </div>
-            </label>
-            <label
-              className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-              htmlFor="topup5"
-            >
-              <input
-                className="d-none"
-                type="radio"
-                id="topup5"
-                name="topup"
-                value="topup5"
-              />
-              <div className="detail-card">
-                <div className="d-flex justify-content-between">
-                  <p className="text-3xl color-palette-1 m-0">
-                    <span className="fw-medium">750</span>
-                    Gold
-                  </p>
-                  <img src="/icon/check.svg" alt="" id="icon-check" />
-                </div>
-                <p className="text-lg color-palette-1 m-0">Rp 3.250.000</p>
-              </div>
-            </label>
+            ))}
+
             <div className="col-lg-4 col-sm-6"></div>
           </div>
         </div>
@@ -146,50 +103,18 @@ export default function TopUpForm() {
           </p>
           <fieldset id="paymentMethod">
             <div className="row justify-content-between">
-              <label
-                className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-                htmlFor="transfer"
-              >
-                <input
-                  className="d-none"
-                  type="radio"
-                  id="transfer"
-                  name="paymentMethod"
-                  value="transfer"
-                />
-                <div className="detail-card">
-                  <div className="d-flex justify-content-between">
-                    <p className="text-3xl color-palette-1 fw-medium m-0">
-                      Transfer
-                    </p>
-                    <img src="/icon/check.svg" alt="" id="icon-check" />
-                  </div>
-                  <p className="text-lg color-palette-1 m-0">
-                    Worldwide Available
-                  </p>
-                </div>
-              </label>
-              <label
-                className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10"
-                htmlFor="visa"
-              >
-                <input
-                  className="d-none"
-                  type="radio"
-                  id="visa"
-                  name="paymentMethod"
-                  value="visa"
-                />
-                <div className="detail-card">
-                  <div className="d-flex justify-content-between">
-                    <p className="text-3xl color-palette-1 fw-medium m-0">
-                      VISA
-                    </p>
-                    <img src="/icon/check.svg" alt="" id="icon-check" />
-                  </div>
-                  <p className="text-lg color-palette-1 m-0">Credit Card</p>
-                </div>
-              </label>
+              {payments.map((payment) =>
+                payment.banks.map((bank) => (
+                  <PaymentItem
+                    key={bank._id}
+                    bankID={bank._id}
+                    type={payment.type}
+                    bankName={bank.bankName}
+                    onChange={() => onPaymentItemChange(payment, bank)}
+                  />
+                ))
+              )}
+
               <div className="col-lg-4 col-sm-6"></div>
             </div>
           </fieldset>
@@ -208,19 +133,21 @@ export default function TopUpForm() {
             name="bankAccount"
             aria-describedby="bankAccount"
             placeholder="Enter your Bank Account Name"
+            value={bankAccountName}
+            onChange={(event) => setBankAccountName(event.target.value)}
           />
         </div>
         <div className="d-sm-block d-flex flex-column w-100">
-          <Link href="/checkout">
-            <a
-              type="submit"
-              className="btn btn-submit rounded-pill fw-medium text-white border-0 text-lg"
-            >
-              Continue
-            </a>
-          </Link>
+          <button
+            type="button"
+            className="btn btn-submit rounded-pill fw-medium text-white border-0 text-lg"
+            onClick={onSubmit}
+          >
+            Continue
+          </button>
         </div>
       </form>
+      <ToastContainer />
     </>
   );
 }

@@ -1,0 +1,82 @@
+[{
+  "_id": {
+    "$oid": "61e249dd1ae06f0d806eecf7"
+  },
+  "role": "admin",
+  "status": "Y",
+  "email": "admin11@gmail.com",
+  "password": "$2a$10$XrX3crBgIAI.KQsfF.G7geGJDPFiTjm3QmtUs5N1qbA26hHBAmcKm",
+  "name": "boom",
+  "createdAt": {
+    "$date": "2022-01-15T04:13:17.910Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-15T04:13:17.910Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d1291e8116143fb8144a7a"
+  },
+  "role": "admin",
+  "status": "Y",
+  "email": "oke@gmail.com",
+  "password": "$2a$10$aa2acQvUY.k9qYYBG2PWu.eWsGhHgkcb2WWQv5i5Bi6bQjyZegry6",
+  "name": "okayy",
+  "createdAt": {
+    "$date": "2022-01-02T04:25:02.865Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-02T04:25:02.865Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d1346a359654363cb28f1b"
+  },
+  "role": "admin",
+  "status": "Y",
+  "email": "admin11@gmail.com",
+  "password": "$2a$10$Ia00yn7JWO4Jdy5muq6mue4D79QnlX3OmZ0SXe1bQQ9bUHu8WiSIy",
+  "name": "boom",
+  "createdAt": {
+    "$date": "2022-01-02T05:13:14.367Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-02T05:13:14.367Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60acf086e2e33c145dff9e65"
+  },
+  "role": "admin",
+  "status": "Y",
+  "email": "admin@gmail.com",
+  "password": "$2a$10$2ATMEfhS1nt5c3VXgzlaqe3epJFTuY7.oKpORdOgqtxFNYLcndCFW",
+  "phoneNumber": "08154023799",
+  "name": "Youpay admin",
+  "createdAt": {
+    "$date": "2021-05-25T12:41:43.122Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-25T12:41:43.122Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61e4f6523d0a7d0016acd947"
+  },
+  "role": "admin",
+  "status": "Y",
+  "email": "youpayadm@gmail.com",
+  "password": "$2a$10$YhV9YL16yWSz/VKY.oJGReMFIAc2vPn6o8Gn81Oz3nxtktF19px/i",
+  "name": "youpay admin",
+  "createdAt": {
+    "$date": "2022-01-17T04:53:39.108Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-17T04:53:39.108Z"
+  },
+  "__v": 0
+}]

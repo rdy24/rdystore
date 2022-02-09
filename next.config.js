@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["api-youpay.herokuapp.com"],
+    domains: ["api-youpay-checkout.herokuapp.com"],
   },
 };

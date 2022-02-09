@@ -4,11 +4,32 @@ import Head from "next/head";
 import Navbar from "../../components/organism/Navbar";
 import Footer from "../../components/organism/Footer";
 import { getDetailGame } from "../../services/player";
-import DetailItem from "../../components/DetailItem";
 import TopUpItem from "../../components/organism/TopUpItem";
 import TopUpForm from "../../components/organism/TopUpForm";
 
 export default function Detail() {
+  const { query, isReady } = useRouter();
+  const [dataItem, setDataItem] = useState({
+    name: "",
+    thumbnail: "",
+    category: {
+      name: "",
+    },
+  });
+  const [nominals, setNominals] = useState([]);
+  const [payments, setPayments] = useState([]);
+  const getDetailGameAPI = useCallback(async (id) => {
+    const response = await getDetailGame(id);
+    setDataItem(response.detail);
+    localStorage.setItem("data-item", JSON.stringify(response.detail));
+    setNominals(response.detail.nominals);
+    setPayments(response.payment);
+  }, []);
+  useEffect(() => {
+    if (isReady) {
+      getDetailGameAPI(query.id);
+    }
+  });
   return (
     <>
       <Head>
@@ -28,12 +49,12 @@ export default function Detail() {
           </div>
           <div className="row">
             <div className="col-xl-3 col-lg-4 col-md-5 pb-30 pb-md-0 pe-md-25 text-md-start">
-              <TopUpItem type="mobile" />
+              <TopUpItem type="mobile" data={dataItem} />
             </div>
             <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
-              <TopUpItem type="desktop" />
+              <TopUpItem type="desktop" data={dataItem} />
               <hr />
-              <TopUpForm />
+              <TopUpForm nominals={nominals} payments={payments} />
             </div>
           </div>
         </div>

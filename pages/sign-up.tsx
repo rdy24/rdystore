@@ -24,24 +24,6 @@ export default function SignUp() {
             Daftar dan bergabung dengan kami
           </p>
           <SignUpForm />
-          <div className="button-group d-flex flex-column mx-auto pt-50">
-            <Link href="/sign-up-photo">
-              <a
-                className="btn btn-sign-up fw-medium text-lg text-white rounded-pill mb-16"
-                role="button"
-              >
-                Continue
-              </a>
-            </Link>
-            <Link href="/sign-in">
-              <a
-                className="btn btn-sign-in fw-medium text-lg color-palette-1 rounded-pill"
-                role="button"
-              >
-                Sign In
-              </a>
-            </Link>
-          </div>
         </form>
       </div>
     </section>

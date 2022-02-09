@@ -24,9 +24,9 @@ export default function FeaturedGame() {
         <div className="row game-item" data-aos="fade-up">
           {gameList.map((item: GameItemTypes) => (
             <GameItem
-              key={item.product._id}
-              title={item.product.game}
-              tile={`${API_IMG}/${item.product.icon}`}
+              key={item._id}
+              title={item.name}
+              tile={`${API_IMG}/${item.thumbnail}`}
               id={item._id}
             />
           ))}

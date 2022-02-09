@@ -33,7 +33,7 @@ export default function Navbar(props: Partial<TitleProps>) {
               <Menu title="Games" active={games} href="/" />
               <Menu title="Articles" active={article} href="/articles" />
               <Menu title="About Us" active={about} href="/about" />
-              <Auth isLogin />
+              <Auth />
             </ul>
           </div>
         </div>

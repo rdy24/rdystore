@@ -1,12 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import jwtDecode from "jwt-decode";
+import { JWTPayloadTypes, UserTypes } from "../../../services/data-type/index";
 
-interface AuthProps {
-  // eslint-disable-next-line react/require-default-props
-  isLogin?: boolean;
-}
-export default function Auth(props: AuthProps) {
-  const { isLogin } = props;
+export default function Auth() {
+  const [isLogin, setLogin] = useState(false);
+  const [user, setUser] = useState({
+    avatar: "",
+  });
+  const router = useRouter();
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      const jwtToken = atob(token);
+      const payload: JWTPayloadTypes = jwtDecode(jwtToken);
+      const userFromPayload: UserTypes = payload.player;
+      setLogin(true);
+      setUser(userFromPayload);
+    }
+  }, []);
+  const onLogout = () => {
+    Cookies.remove("token");
+    setLogin(false);
+    router.push("/");
+  };
+  const IMG = process.env.NEXT_PUBLIC_IMG;
   if (isLogin) {
     return (
       <li className="nav-item my-auto dropdown d-flex">
@@ -21,7 +42,7 @@ export default function Auth(props: AuthProps) {
               aria-expanded="false"
             >
               <img
-                src="/img/avatar-1.png"
+                src={`${IMG}/${user.avatar}`}
                 className="rounded-circle"
                 width="40"
                 height="40"
@@ -55,12 +76,10 @@ export default function Auth(props: AuthProps) {
                 </a>
               </Link>
             </li>
-            <li>
-              <Link href="/sign-in">
-                <a className="dropdown-item text-lg color-palette-2" href="/#">
-                  Log Out
-                </a>
-              </Link>
+            <li onClick={onLogout}>
+              <a className="dropdown-item text-lg color-palette-2" href="#">
+                Log Out
+              </a>
             </li>
           </ul>
         </div>
